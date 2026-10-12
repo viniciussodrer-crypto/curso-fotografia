@@ -191,19 +191,13 @@ b, strong { font-weight: 700; }
 .duo { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; margin-top: 40px; }
 
 /* ---------- Depoimentos ---------- */
-.testimonials {
-  display: flex; gap: 18px; align-items: center;
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 10px max(20px, calc((100vw - 1120px) / 2 + 20px)) 20px;
-  scrollbar-width: thin; scrollbar-color: var(--gold) transparent;
+.testimonials { columns: 3 300px; column-gap: 20px; max-width: 1040px; margin: 10px auto 0; }
+.t-card {
+  break-inside: avoid; margin: 0 0 20px; padding: 10px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .45);
 }
-.testimonials img {
-  flex: 0 0 auto; width: 240px; border-radius: 22px;
-  border: 1px solid var(--line); scroll-snap-align: center;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, .5);
-}
-.testimonials img.t-wide { width: 340px; border-radius: 12px; }
-.swipe-hint { text-align: center; color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.t-card img { width: 100%; border-radius: 10px; }
 
 /* ---------- Módulos ---------- */
 .modules { --gap: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); margin-top: 16px; }
@@ -307,8 +301,7 @@ b, strong { font-weight: 700; }
   .hero-content { margin-top: 24px; }
   .duo { grid-template-columns: 1fr; }
   .btn { width: 100%; padding: 16px 20px; }
-  .testimonials img { width: 72vw; max-width: 280px; }
-  .testimonials img.t-wide { width: 80vw; max-width: 340px; }
+  .testimonials { max-width: 460px; }
   .modules { --gap: 10px; }
   .play-icon { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
   .play-icon::after { border-left-width: 20px; border-top-width: 12px; border-bottom-width: 12px; }

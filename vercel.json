@@ -1,6 +1,6 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/curso-fotografo-na-pratica", "destination": "/index.html" }
+    { "source": "/curso-fotografo-na-pratica", "destination": "/" }
   ]
 }

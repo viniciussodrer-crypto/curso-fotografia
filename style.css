@@ -279,7 +279,52 @@ b, strong { font-weight: 700; }
 
 /* ---------- Oferta ---------- */
 .offer { background: radial-gradient(ellipse at top, rgba(246, 180, 0, .14), transparent 60%), var(--bg); }
-.offer-img { width: 100%; max-width: 480px; margin: 10px auto 30px; border-radius: 20px; border: 2px solid var(--gold); box-shadow: 0 0 0 8px rgba(246, 180, 0, .1), 0 30px 70px rgba(0, 0, 0, .7); }
+.price-card {
+  position: relative; overflow: hidden;
+  width: 100%; max-width: 480px; margin: 10px auto 30px; padding: 40px clamp(18px, 6vw, 30px) 32px;
+  border-radius: 20px; border: 2px solid var(--gold);
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, .62) 0%, rgba(10, 10, 10, .85) 18%, #0a0a0a 30%),
+    url("img/oferta-fundo.jpg") center top / 100% auto no-repeat, #0a0a0a;
+  box-shadow: 0 0 0 8px rgba(246, 180, 0, .1), 0 30px 70px rgba(0, 0, 0, .7);
+  text-align: center;
+}
+.pc-kicker { margin: 0; font-weight: 700; font-size: 14px; letter-spacing: 6px; color: #fff; }
+.pc-title {
+  margin: 2px 0 18px; font-family: var(--display); font-weight: 700;
+  font-size: clamp(40px, 11vw, 56px); line-height: .98; color: #fff;
+}
+.pc-title span { display: block; color: var(--gold); }
+.pc-price {
+  margin: 0; font-weight: 800; font-size: clamp(44px, 12vw, 60px); line-height: 1; color: #fff; letter-spacing: -1px;
+}
+.pc-price small { font-size: .5em; margin-right: 6px; vertical-align: .55em; letter-spacing: 0; }
+.pc-install { margin: 6px 0 18px; font-size: 20px; font-weight: 600; color: #fff; }
+.pc-install b { color: var(--gold); font-weight: 800; }
+.pc-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 26px;
+  padding: 8px 18px; background: #fff; color: #111; border-radius: 6px;
+  font-weight: 800; font-size: 16px; letter-spacing: .5px;
+}
+.pc-badge svg { width: 22px; height: 22px; fill: none; stroke: #111; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pc-topics {
+  list-style: none; counter-reset: pc; margin: 0 auto; padding: 0; max-width: 360px;
+  display: grid; gap: 12px; text-align: left;
+}
+.pc-topics li {
+  counter-increment: pc; display: flex; align-items: center; gap: 10px; line-height: 1.3;
+  font-weight: 600; font-size: clamp(13px, 3.6vw, 15px); text-transform: uppercase; letter-spacing: 0; color: #f1f1f1;
+}
+.pc-topics svg {
+  flex: 0 0 30px; width: 30px; height: 30px; fill: none; stroke: var(--gold);
+  stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+}
+.pc-topics li::before { content: counter(pc) "."; color: var(--gold); font-weight: 800; min-width: 16px; margin-right: -4px; }
+.pc-topics li svg { order: -1; }
+.pc-cta {
+  display: inline-block; margin: 26px 0 0; padding: 8px 22px; background: #fff; color: #111;
+  border-radius: 6px; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: 1px; text-decoration: none;
+}
 
 /* ---------- Professor ---------- */
 .teacher { grid-template-columns: .85fr 1.15fr; }

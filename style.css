@@ -243,18 +243,80 @@ b, strong { font-weight: 700; }
 }
 
 /* ---------- Bônus ---------- */
-.bonus-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: start; margin: 40px 0 30px; }
+.bonus-grid { max-width: 760px; margin: 50px auto 30px; }
 .bonus-cards { display: grid; gap: 14px; }
-.bonus-cards .btn { justify-self: start; }
+.bonus-cards .btn { justify-self: center; }
 .bonus-kicker { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 34px; line-height: 1.1; margin: 0 0 6px; }
 .bonus-kicker span { color: var(--gold); font-size: 22px; }
+.bonus-kicker { text-align: center; }
+
+/* ---------- Mockups dos e-books ---------- */
+.books-label { display: block; margin-top: 30px; }
+.books {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 240px)); justify-content: center;
+  gap: clamp(28px, 5vw, 56px); margin: 26px auto 0; padding: 10px 0 20px;
+}
+.book { margin: 0; perspective: 1100px; }
+.book-3d {
+  position: relative; transform: rotateY(-24deg) rotateX(3deg); transform-style: preserve-3d;
+  transition: transform .45s ease;
+}
+.book:hover .book-3d { transform: rotateY(-8deg) rotateX(2deg) translateY(-6px); }
+/* lombada */
+.book-3d::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 26px;
+  background: linear-gradient(90deg, #2a2a2a, #0c0c0c);
+  transform: translateX(-26px) rotateY(-90deg); transform-origin: right center;
+  border-radius: 3px 0 0 3px;
+}
+/* paginas */
+.book-3d::after {
+  content: ""; position: absolute; top: 4px; bottom: 4px; right: -1px; width: 22px;
+  background: repeating-linear-gradient(90deg, #f3efe6 0 2px, #d9d3c5 2px 3px);
+  transform: translateX(22px) rotateY(90deg); transform-origin: left center;
+}
+.book-cover {
+  position: relative; aspect-ratio: 2 / 3; overflow: hidden;
+  border-radius: 2px 8px 8px 2px; background: #0b0b0b;
+  border: 1px solid rgba(246, 180, 0, .35);
+  box-shadow: 18px 22px 40px rgba(0, 0, 0, .65), inset 6px 0 10px rgba(255, 255, 255, .06);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 0 18px 22px; text-align: left;
+}
+.book-cover img {
+  position: absolute; inset: 0 0 auto 0; width: 100%; height: 62%; object-fit: cover;
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+}
+/* vinco perto da lombada */
+.book-cover::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 8px; width: 2px; z-index: 2;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.35), rgba(255,255,255,.08));
+}
+.book-tag {
+  position: relative; z-index: 1; align-self: flex-start; margin-bottom: 10px;
+  padding: 4px 10px; border-radius: 4px; background: var(--gold); color: #111;
+  font-weight: 800; font-size: 11px; letter-spacing: 1.5px;
+}
+.book-title {
+  position: relative; z-index: 1; margin: 0;
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(20px, 2.2vw, 26px); line-height: 1.08; color: #fff;
+}
+.book-title span { color: var(--gold); }
+@media (max-width: 767px) {
+  .books { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px 22px; }
+  .book { flex: 0 0 calc(50% - 22px); max-width: 165px; }
+  .book-3d { transform: rotateY(-16deg) rotateX(2deg); }
+  .book-cover { padding: 0 12px 14px; }
+  .book-tag { font-size: 9px; padding: 3px 7px; margin-bottom: 7px; }
+  .book-title { font-size: 15px; }
+}
 .card { display: flex; gap: 16px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
 .card p { margin: 0; }
 .card-ico { flex: 0 0 44px; height: 44px; display: grid; place-items: center; font-size: 22px; background: rgba(246, 180, 0, .12); border-radius: 12px; }
 .checks { list-style: none; padding: 20px 22px; margin: 6px 0 0; background: linear-gradient(135deg, rgba(246, 180, 0, .16), rgba(246, 180, 0, .04)); border: 1px solid rgba(246, 180, 0, .4); border-radius: 14px; display: grid; gap: 8px; }
 .checks li { font-weight: 600; }
 .checks li::before { content: "• "; color: var(--gold); }
-.bonus-img { border-radius: var(--radius); width: 100%; position: sticky; top: 20px; }
 
 /* ---------- FAQ ---------- */
 .faq { display: grid; gap: 12px; margin-top: 30px; }
@@ -341,11 +403,10 @@ b, strong { font-weight: 700; }
 @media (max-width: 960px) {
   .modules img { flex-basis: calc((100% - var(--gap)) / 2); }
   .modules .m-wide { flex-basis: 100%; aspect-ratio: 1400 / 781; }
-  .split, .teacher, .bonus-grid { grid-template-columns: 1fr; gap: 32px; }
+  .split, .teacher { grid-template-columns: 1fr; gap: 32px; }
   .split-text { text-align: center; }
   .split-text .title, .split-text .eyebrow { text-align: center; }
   .bonus-cards .btn { justify-self: center; }
-  .bonus-img { position: static; max-width: 520px; margin: 0 auto; }
   .topics { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 767px) {
